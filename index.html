@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人网站</title>
+    <title>A CUI'Blog</title>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-    <h1>欢迎访问我的网站</h1>
+    <header> 
+        <h1>Welcome CUI'Blog</h1>
+
+        <nav>
+        <a href="index.html">首页</a>
+        <a href="about">关于</a><!-- #about 是“页面内锚点”，先占坑，Day2 会填内容 -->
+        <button id="themeBtn" aria-label="切换主题">🌓</button>
+    </nav><!-- nav 标签：专门用来放导航链接 -->
+    </header>
+    <div id="progressBar"></div> <!-- ===== 阅读进度条 ===== -->
+    <div class="header-inner">
+        <h1>我的博客</h1>
+    </div>
+    <main>
+        <article>
+            <h2>第一篇文章</h2>
+            <time>2025-10-01</time>
+            <p>我写的<——</p>
+        </article>
+    </main>
+    <footer>
+        <p>&copy;2025|Powered by github Pages</p>
+    </footer>
+    <script src="js/main.js"></script> 
 </body>
 </html>
