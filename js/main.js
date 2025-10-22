@@ -36,7 +36,7 @@ fetch('posts/').then((res)=>res.text).then((html)=>{
 .catch((err)=>(postList.innerHTML='加载失败：'+err));
 //加载单篇文章
 function loadPost(filename){
-    fetch('posts/'+filename).then((res)=>res.text()).then((text)=>{
+    fetch('daily/'+filename).then((res)=>res.text()).then((text)=>{
         const parts=text.split('---');
         const meta=parts[1]
         const content=parts[2]||'';
@@ -51,3 +51,4 @@ function loadPost(filename){
         postList.appendChild(li)
     })
 }
+
