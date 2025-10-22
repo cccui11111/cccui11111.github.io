@@ -29,7 +29,7 @@
         const postFile=prams.get('post');
         if(!postFile) 
             location.href='index.html';
-        fetch('post/'+postFile).then(r=>r.text()).then(text=>{
+        fetch('daily/'+postFile).then(r=>r.text()).then(text=>{
             const[_,meta,content]=text.split('---')
             const info={}
             meta.split('\n').forEach(line=>{
