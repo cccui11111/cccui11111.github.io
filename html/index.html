@@ -1,50 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Leaf'Blog</title>
-    <link rel="stylesheet" href="css/style.css"/>
-    <style>
-        pre { background: #f6f8fa; padding: 1rem; overflow: auto; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Leaf'Blog</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #postList{list-style:none;padding:0}
+    #postList li{margin-bottom:1rem;padding:1rem;background:var(--card-bg);border-radius:var(--radius)}
+    #postList a{color:var(--accent);text-decoration:none;font-size:1.1rem}
+    #postList time{display:block;font-size:0.875rem;color:#666;margin-top:0.25rem}
   </style>
 </head>
 <body>
-    <header> 
-        <h1><a href="index.html">Welcome CUI'Blog</a></h1>
-        <nav>
+  <header>
+    <div class="header-inner">
+      <h1><a href="index.html">A Leaf'Blog</a></h1>
+      <nav>
         <a href="index.html">首页</a>
-        <a href="index.html">关于</a>
-        <button id="themeBtn" aria-label="切换主题">🌓</button>
-    </nav><!-- nav 标签：专门用来放导航链接 -->
-    </header>
-    <div id="progressBar"></div> <!-- ===== 阅读进度条 ===== -->
-    <main id="articleContainer">加载中...</main>
-    <footer>
-        <p>&copy;2025|Powered by github Pages</p>
-    </footer>
-    <script src="js/main.js"></script> 
-    <script>
-        const params=new URLSearchParams(location.search);
-        const postFile=params.get('post');
-        //if(!postFile) 
-            //location.href='index.html';
-        fetch('daily/'+postFile).then(r=>r.text()).then(text=>{
-            const[_,meta,content]=text.split('---')
-            const info={}
-            meta.split('\n').forEach(line=>{
-                const [k,v]=line.split(':').map(s=>s.trim());
-                if (k)
-                    info[k]=v;
-            });
-            document.getElementById('arricle').textContent=info.title;
-            document.getElementById('articleContainer').innerHTML=`
-                <article>
-                    <h2>${info.title}</h2>
-                    <time>${info.date}</time>
-                    <div>${md2html(content)}</div>
-                </article>`;
-        });
-    </script>
+        <a href="#about">关于</a>
+        <button id="themeBtn">🌓</button>
+      </nav>
+    </div>
+  </header>
+  <div id="progressBar"></div>
+
+  <main>
+    <h2>最新文章</h2>
+    <ul id="postList">加载中...</ul>
+  </main>
+
+  <footer><p>&copy; 2025 | Powered by GitHub Pages</p></footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
