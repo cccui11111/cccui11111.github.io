@@ -8,11 +8,11 @@
 </head>
 <body>
     <header> 
-        <h1>Welcome CUI'Blog</h1>
+        <h1>Welcome Leaf'Blog</h1>
 
         <nav>
         <a herf="index.html">首页</a>
-        <a herf="about">关于</a><!-- #about 是“页面内锚点”，先占坑，Day2 会填内容 -->
+        <a herf="about">关于</a><!-- #about 是“页面内锚点”，先占坑，后面会填内容 -->
     </nav><!-- nav 标签：专门用来放导航链接 -->
     </header>
     <main>
@@ -26,5 +26,26 @@
         <p>&copy;2025|Powered by github Pages</p>
     </footer>
     <script src="js/main.js"></script> 
+    <script>
+        const params=new URLSearchParams(location.search);
+        const postFile=params.get('post');
+        if(!postFile) location.href='index.html';
+        fetch('daily/'+postFile).then(r=>r.text()).then(text=>{
+            const[_,meta,content]=text.split('---');
+            const info={};
+            meta.split('\n').forEach(line=>{
+                const [k,v]=line.split(':').map(s=>s.trim());
+                if(k) info[k]=v;
+            });
+        document.getElementById('artTitle').textContent=info.title;
+        document.getElementById('articleContainer').innerHTML=<article>
+            <h2>${info.title}</h2>
+            <time>${info.date}</time>
+            <div>${md2html(content)}</div>
+        </article>;
+    
+        });
+
+    </script>
 </body>
 </html>
