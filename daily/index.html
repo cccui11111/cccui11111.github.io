@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>A Leaf'Blog</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header><h1>daily 目录</h1></header>
+  <main>
+    <ul id="fileList">加载中...</ul>
+  </main>
+  <script>
+    fetch('./')
+      .then(r => r.text())
+      .then(html => {
+        const files = [...html.matchAll(/href="(.+?\.md)"/g)].map(m => m[1]);
+        const list = document.getElementById('fileList');
+        files.forEach(f => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${f}">${f}</a>`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
