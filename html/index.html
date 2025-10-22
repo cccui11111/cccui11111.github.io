@@ -25,8 +25,8 @@
     </footer>
     <script src="js/main.js"></script> 
     <script>
-        const prams=new URLSearchParams(location.search);
-        const postFile=prams.get('post');
+        const params=new URLSearchParams(location.search);
+        const postFile=params.get('post');
         //if(!postFile) 
             //location.href='index.html';
         fetch('daily/'+postFile).then(r=>r.text()).then(text=>{
