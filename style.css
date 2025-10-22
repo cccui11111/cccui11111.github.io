@@ -1,0 +1,132 @@
+/* 定义颜色、字号，后面想换主题只改这里 */
+:root{
+    --bg:#ffffff;
+    --text:#222222;
+    --accent:#0969da;
+    --card-bg:#f6f8fa;
+    --radius:8px;
+    --gap:1rem;
+    --max-width:800px;
+}
+/* 去掉浏览器默认边距，让所有尺寸计算从 0 开始 */
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+header{
+    background: var(--card-bg);
+    border-bottom: 1px solid #e5e7eb;
+    padding: var(--gap);
+}
+.header-inner{
+    max-width: var(--max-width);
+    margin:0 auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--gap);
+}
+h1{
+    font-size: 1.5rem;
+    color: var(--text);
+}
+nav a{
+    margin-left: 1rem;
+    color: var(--accent);
+    text-decoration: none;/* 去掉下划线*/
+    transition: opacity .2s; /* 鼠标悬停时透明度变化用 0.2 秒渐变，更柔和。*/
+
+}
+nav a:hover{
+    opacity: .7;
+}
+main{
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    padding: 0 var(--gap);
+}
+article{
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+article h2{
+    margin-bottom: .5rem;
+}
+footer{
+    text-align: center;
+    padding: 2rem 0;
+    font-size: .875rem;
+    color: #666;
+}
+/* 当视口宽度 ≤600px 时，以下规则会覆盖上面的同名属性。 */
+@media(max-width:600px){
+    .header-inner{
+        flex-direction: column;
+        gap:.5rem;
+    }
+    nav a{
+        margin: 0 .5rem;
+    }
+}
+html.dark{
+    --bg:#121212;
+    --text:#e0e0e0;
+    --accent:#58a6ff;
+    --card-bg:#1e1e1e;
+}
+body{
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s,color 0.3s;
+}
+#themeBtn{
+    margin-left: 0.6rem;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform .2s;
+}
+#themeBtn:hover{
+    transform: rotate(30deg);
+}
+#progressBar{/* 进度条容器 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(accent);
+    width: 0%;/* 由 JS 动态改变 */
+    z-index: 9999;
+    transition: width 0.2s;
+}
+#postList{
+    list-style: none;
+    padding: 0;
+}
+#postList li{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--acrd-bg);
+    border-radius: var(--radius);
+}
+#postList a{
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+#postList time{
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
