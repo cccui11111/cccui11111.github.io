@@ -27,8 +27,8 @@
     <script>
         const prams=new URLSearchParams(location.search);
         const postFile=prams.get('post');
-        if(!postFile) 
-            location.href='index.html';
+        //if(!postFile) 
+            //location.href='index.html';
         fetch('daily/'+postFile).then(r=>r.text()).then(text=>{
             const[_,meta,content]=text.split('---')
             const info={}
