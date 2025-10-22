@@ -38,7 +38,8 @@
                 if(k) info[k]=v;
             });
         document.getElementById('artTitle').textContent=info.title;
-        document.getElementById('articleContainer').innerHTML=<article>
+        document.getElementById('articleContainer').innerHTML=
+        <article>
             <h2>${info.title}</h2>
             <time>${info.date}</time>
             <div>${md2html(content)}</div>
@@ -49,3 +50,4 @@
     </script>
 </body>
 </html>
+
