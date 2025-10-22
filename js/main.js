@@ -29,7 +29,7 @@ function md2html(md){
     );
 }
 const postList=document.getElementById('postlist');
-fetch('posts/').then((res)=>res.text).then((html)=>{
+fetch('daily/').then((res)=>res.text()).then((html)=>{
     const files=[...html.matchAll(/href="(.+?\.md)"/g)].map((m=>m[1]))
     files.reverse().forEach((file)=>loadPost(file));
 })
@@ -51,4 +51,5 @@ function loadPost(filename){
         postList.appendChild(li)
     })
 }
+
 
